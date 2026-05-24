@@ -35,3 +35,31 @@
   transform: none !important;
   visibility: visible !important;
 }
+/* ---------------------------------------------------- */
+/* FIXED NAVBAR MENU BUTTON OVERRIDE                    */
+/* Forces the menu to reveal when clicked or hovered    */
+/* ---------------------------------------------------- */
+
+/* 1. Reset the wrapper containing the hidden menu to allow interaction */
+#nav div[class*="pointer-events-none"] {
+  pointer-events: auto !important;
+}
+
+/* 2. When hovering over the menu zone, force the layout to scale up and become visible */
+#nav div[class*="scale-[0.15]"]:hover,
+#nav div[class*="scale-[0.15]"]:focus-within,
+#nav div:has(button[aria-label="Open menu"]):hover + div,
+#nav div:has(button[aria-label="Open menu"]):active + div {
+  scale: 1 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  background: var(--card) !important;
+  border-radius: var(--theme-border-radius-capped) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 3. Ensure the underlying background animation block expands to match */
+#nav div[class*="primary-button"][aria-hidden="true"] {
+  display: none !important; /* Hides the breaking animated background shape */
+}
